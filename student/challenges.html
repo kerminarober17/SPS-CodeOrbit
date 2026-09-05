@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coding Challenges - SPS Code Orbit</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/lesson.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <div class="app-shell">
+    <aside id="app-sidebar"></aside>
+
+    <div class="main-wrapper">
+      <header id="top-header"></header>
+
+      <main class="page-content" style="max-width: 1200px; margin: 0 auto; width: 100%;">
+        
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem;">
+          <div>
+            <span class="badge badge-primary" style="margin-bottom: 0.5rem;">ORBIT ARENA</span>
+            <h1 style="font-size: 2rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.25rem;">Coding Challenges &amp; Projects</h1>
+            <p style="color: var(--text-secondary); font-size: 0.95rem;">Test your computational problem-solving and level up your XP.</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem;">
+            <button class="btn btn-secondary btn-sm" onclick="filterChallenges('all')">All Challenges</button>
+            <button class="btn btn-primary btn-sm" onclick="filterChallenges('python')">Python</button>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+          
+          <!-- Challenge 1: The Score Multiplier -->
+          <div class="card" style="padding: 1.75rem; border-radius: var(--radius-lg);">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+              <span class="badge badge-success">Beginner</span>
+              <span style="font-weight: 800; color: #F59E0B; font-size: 0.9rem;">+35 XP</span>
+            </div>
+            <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem;">Score Multiplier</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+              Calculate the bonus score by creating two variables <code>base_score = 40</code> and <code>multiplier = 3</code> and printing their product.
+            </p>
+
+            <div class="interactive-editor-wrap">
+              <textarea class="editor-textarea" id="chal-code-1" style="height: 100px;">base_score = 40
+multiplier = 3
+total = base_score * multiplier
+print(total)</textarea>
+              <div class="output-console">
+                <div class="output-label">CONSOLE OUTPUT</div>
+                <div class="output-val" id="chal-out-1">120</div>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+                <button class="btn btn-primary btn-sm" onclick="runChallenge1()">Run &amp; Submit</button>
+                <div id="chal-feed-1" style="font-size: 0.85rem; font-weight: 600; color: #10B981;">✓ Challenge Solved</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Challenge 2: Space Orbit Distance -->
+          <div class="card" style="padding: 1.75rem; border-radius: var(--radius-lg);">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+              <span class="badge badge-primary">Intermediate</span>
+              <span style="font-weight: 800; color: #F59E0B; font-size: 0.9rem;">+50 XP</span>
+            </div>
+            <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem;">Cody's Fuel Calculator</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+              Cody has <code>fuel = 100</code>. Each orbit burns <code>burn_rate = 15</code>. Calculate and print fuel remaining after 4 orbits.
+            </p>
+
+            <div class="interactive-editor-wrap">
+              <textarea class="editor-textarea" id="chal-code-2" style="height: 100px;">fuel = 100
+burn_rate = 15
+orbits = 4
+remaining = fuel - (burn_rate * orbits)
+print(remaining)</textarea>
+              <div class="output-console">
+                <div class="output-label">CONSOLE OUTPUT</div>
+                <div class="output-val" id="chal-out-2">40</div>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+                <button class="btn btn-primary btn-sm" onclick="runChallenge2()">Run &amp; Submit</button>
+                <div id="chal-feed-2" style="font-size: 0.85rem; font-weight: 600; color: #10B981;">✓ Challenge Solved</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="/data/users.js"></script>
+  <script src="/data/courses.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/components.js"></script>
+  <script src="/js/code-runner.js"></script>
+  <script src="/js/gamification.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      window.renderSidebar('challenges');
+      window.renderHeader('Orbit Challenges', 'Test your computational problem-solving and level up your XP.');
+    });
+
+    function runChallenge1() {
+      const code = document.getElementById('chal-code-1').value;
+      const res = window.codeRunner.evaluatePractice(code, '120');
+      document.getElementById('chal-out-1').textContent = res.output;
+      const feed = document.getElementById('chal-feed-1');
+      if (res.passed) {
+        feed.style.color = '#10B981';
+        feed.textContent = '✓ Challenge Solved (+35 XP)';
+        window.gamification.awardXP(35, 'Challenge Solved');
+      } else {
+        feed.style.color = '#DC2626';
+        feed.textContent = '✗ Expected output: 120';
+      }
+    }
+
+    function runChallenge2() {
+      const code = document.getElementById('chal-code-2').value;
+      const res = window.codeRunner.evaluatePractice(code, '40');
+      document.getElementById('chal-out-2').textContent = res.output;
+      const feed = document.getElementById('chal-feed-2');
+      if (res.passed) {
+        feed.style.color = '#10B981';
+        feed.textContent = '✓ Challenge Solved (+50 XP)';
+        window.gamification.awardXP(50, 'Challenge Solved');
+      } else {
+        feed.style.color = '#DC2626';
+        feed.textContent = '✗ Expected output: 40';
+      }
+    }
+  </script>
+</body>
+</html>

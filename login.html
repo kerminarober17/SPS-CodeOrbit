@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - SPS Code Orbit</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body style="background: var(--bg-app); min-height: 100vh; display: flex; flex-direction: column;">
+
+  <!-- Simple Navigation Header -->
+  <header style="background: rgba(10, 14, 26, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;">
+    <a href="/index.html" class="landing-logo" style="text-decoration: none;">
+      <div class="landing-logo-icon">
+        <i data-lucide="orbit" style="width: 26px; height: 26px;"></i>
+      </div>
+      <span>SPS Code Orbit</span>
+    </a>
+    <a href="/signup.html" class="btn btn-outline btn-sm">Create Student Account</a>
+  </header>
+
+  <!-- Login Container -->
+  <div style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 2rem 1.5rem;">
+    <div class="card" style="max-width: 440px; width: 100%; padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg);">
+      
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: #EFF6FF; color: #2563EB; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+          <i data-lucide="lock" style="width: 28px; height: 28px;"></i>
+        </div>
+        <h1 style="font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.35rem;">Welcome back</h1>
+        <p style="font-size: 0.9rem; color: var(--text-secondary);">Enter your credentials to access your Code Orbit dashboard.</p>
+      </div>
+
+      <form id="login-form" onsubmit="handleLoginSubmit(event)" style="display: flex; flex-direction: column; gap: 1.25rem;">
+        <div>
+          <label style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-main); margin-bottom: 0.4rem;">Username</label>
+          <input type="text" id="login-username" class="input-field" placeholder="e.g. shady or teacher_sarah" required autofocus>
+        </div>
+
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+            <label style="font-size: 0.85rem; font-weight: 600; color: var(--text-main);">Password</label>
+            <a href="#" style="font-size: 0.8rem; color: var(--color-primary); text-decoration: none;">Forgot?</a>
+          </div>
+          <input type="password" id="login-password" class="input-field" placeholder="••••••••" required>
+        </div>
+
+        <div id="login-error-alert" style="display: none; padding: 0.75rem 1rem; background: #FEF2F2; border: 1px solid #FCA5A5; color: #DC2626; border-radius: var(--radius-md); font-size: 0.85rem;"></div>
+
+        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 0.5rem;" id="btn-submit-login">
+          <span>Log In</span>
+          <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+        </button>
+      </form>
+
+      <div style="margin-top: 1.75rem; padding-top: 1.5rem; border-top: 1px solid var(--border-light); font-size: 0.875rem; text-align: center; color: var(--text-secondary);">
+        Don't have an account? <a href="/signup.html" style="color: var(--color-primary); font-weight: 600; text-decoration: none;">Register here</a>
+      </div>
+
+      <!-- Quick Role Preview Helper -->
+      <div style="margin-top: 1.5rem; background: var(--bg-surface-secondary); padding: 0.85rem; border-radius: var(--radius-md); border: 1px dashed var(--border-light); font-size: 0.8rem; color: var(--text-secondary);">
+        <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--text-main);">Quick Role Switcher:</div>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button type="button" class="btn btn-outline btn-sm" onclick="quickFill('shady', 'student')" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;">Student (Shady)</button>
+          <button type="button" class="btn btn-outline btn-sm" onclick="quickFill('teacher_sarah', 'teacher')" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;">Teacher (Sarah)</button>
+          <button type="button" class="btn btn-outline btn-sm" onclick="quickFill('admin', 'admin')" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;">Admin</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="/data/users.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/theme.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) window.lucide.createIcons();
+    });
+
+    function quickFill(user, role) {
+      document.getElementById('login-username').value = user;
+      document.getElementById('login-password').value = 'password123';
+      window.auth.switchUserRole(role);
+    }
+
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const username = document.getElementById('login-username').value;
+      const pass = document.getElementById('login-password').value;
+      const res = window.auth.login(username, pass);
+
+      if (res.success) {
+        if (res.user.role === 'admin') window.location.href = '/admin/dashboard.html';
+        else if (res.user.role === 'teacher') window.location.href = '/teacher/dashboard.html';
+        else window.location.href = '/student/dashboard.html';
+      } else {
+        const alertBox = document.getElementById('login-error-alert');
+        alertBox.textContent = res.message;
+        alertBox.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>

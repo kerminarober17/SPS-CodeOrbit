@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPS Code Orbit - The Future of Learning</title>
+  <meta name="description" content="School-wide interactive learning platform for programming, artificial intelligence, robotics, and creative technology.">
+  <meta property="og:title" content="SPS Code Orbit - The Future of Learning">
+  <meta property="og:description" content="Interactive learning in programming, artificial intelligence, robotics, and technology for students from primary school through secondary school.">
+  
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/landing.css">
+  
+  <!-- Lucide Icons Script -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Landing Navigation -->
+  <header class="landing-navbar" id="landing-navbar">
+    <div class="landing-nav-container">
+      <a href="/index.html" class="landing-logo" id="nav-brand-logo">
+        <div class="landing-logo-icon">
+          <i data-lucide="orbit" style="width: 30px; height: 30px;"></i>
+        </div>
+        <span>SPS Code Orbit</span>
+      </a>
+
+      <nav class="landing-nav-links" id="landing-nav-links">
+        <a href="/courses.html" class="landing-nav-link" id="nav-link-courses">Courses</a>
+        <a href="/challenges.html" class="landing-nav-link" id="nav-link-challenges">Challenges</a>
+        <a href="/about.html" class="landing-nav-link" id="nav-link-about">About</a>
+      </nav>
+
+      <div class="landing-nav-auth" id="landing-nav-auth">
+        <a href="/login.html" class="landing-login-link" id="nav-btn-login">Log in</a>
+        <a href="/signup.html" class="btn btn-primary" id="nav-btn-get-started">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION WITH VIDEO BACKGROUND -->
+  <section class="hero-section" id="hero-section">
+    <!-- Real Video Background -->
+    <video class="hero-video-bg" autoplay muted loop playsinline id="hero-video-element">
+      <source src="https://res.cloudinary.com/wojtqtsw/video/upload/v1788612774/Robot_standing_on_glowing_platform_202609051553.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+
+    <div class="container" style="position: relative; z-index: 5;">
+      <div class="hero-content-grid">
+        <div class="hero-text-col">
+          <div class="hero-tag" id="hero-tag-badge">
+            <span>THE FUTURE OF LEARNING</span>
+          </div>
+
+          <h1 class="hero-title" id="hero-main-title">
+            Learn.<br>
+            Code.<br>
+            <span class="highlight-cyan">Explore.</span>
+          </h1>
+
+          <p class="hero-subtitle" id="hero-main-desc">
+            Interactive learning in programming, artificial intelligence, robotics, and technology for students from primary school through secondary school.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="/student/dashboard.html" class="btn btn-primary btn-lg" id="hero-btn-start-learning">
+              <span>Start Learning</span>
+              <i data-lucide="arrow-right" style="width: 20px; height: 20px;"></i>
+            </a>
+            <a href="/courses.html" class="btn btn-outline-light btn-lg" id="hero-btn-explore-courses">
+              <span>Explore Courses</span>
+              <i data-lucide="arrow-right" style="width: 20px; height: 20px;"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: One Orbit. Endless Possibilities -->
+  <section class="orbit-possibilities-section" id="possibilities-section">
+    <div class="container">
+      <div class="section-header-dot">
+        <div class="dot"></div>
+        <span>One <span class="orbit-word">Orbit</span>. Endless Possibilities.</span>
+      </div>
+      <p class="section-description">
+        Explore future-ready skills through engaging and hands-on learning experiences.
+      </p>
+
+      <div class="possibilities-grid">
+        <!-- Card 1: Programming -->
+        <div class="possibility-card" id="card-track-programming">
+          <div class="possibility-icon-wrap">
+            <i data-lucide="code-2" style="width: 36px; height: 36px; color: #2563EB;"></i>
+          </div>
+          <h3>Programming</h3>
+          <p>Learn to code. Build logic. Create the future.</p>
+          <div class="possibility-bottom-line line-blue"></div>
+        </div>
+
+        <!-- Card 2: AI -->
+        <div class="possibility-card" id="card-track-ai">
+          <div class="possibility-icon-wrap">
+            <i data-lucide="brain" style="width: 36px; height: 36px; color: #0EA5E9;"></i>
+          </div>
+          <h3>Artificial Intelligence</h3>
+          <p>Understand AI. Train models. Shape tomorrow.</p>
+          <div class="possibility-bottom-line line-cyan"></div>
+        </div>
+
+        <!-- Card 3: Robotics -->
+        <div class="possibility-card" id="card-track-robotics">
+          <div class="possibility-icon-wrap">
+            <i data-lucide="bot" style="width: 36px; height: 36px; color: #8B5CF6;"></i>
+          </div>
+          <h3>Robotics</h3>
+          <p>Design. Build. Automate. Bring ideas to life.</p>
+          <div class="possibility-bottom-line line-purple"></div>
+        </div>
+
+        <!-- Card 4: Creative Technology -->
+        <div class="possibility-card" id="card-track-creative">
+          <div class="possibility-icon-wrap">
+            <i data-lucide="layers" style="width: 36px; height: 36px; color: #F59E0B;"></i>
+          </div>
+          <h3>Creative Technology</h3>
+          <p>Imagine. Design. Innovate. Create without limits.</p>
+          <div class="possibility-bottom-line line-yellow"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: How Learning Works -->
+  <section class="how-learning-works-section" id="how-it-works-section">
+    <div class="container">
+      <h2 class="section-title-standard">How Learning Works</h2>
+
+      <div class="learning-steps-grid">
+        <!-- Step 1 -->
+        <div class="learning-step-card" id="step-01-learn">
+          <div class="step-icon-box">
+            <i data-lucide="book-open" style="color: #2563EB;"></i>
+          </div>
+          <div class="step-info">
+            <div class="step-num num-blue">01</div>
+            <h4>Learn</h4>
+            <p>Engaging lessons and interactive explanations.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="learning-step-card" id="step-02-practice">
+          <div class="step-icon-box">
+            <i data-lucide="terminal" style="color: #0EA5E9;"></i>
+          </div>
+          <div class="step-info">
+            <div class="step-num num-cyan">02</div>
+            <h4>Practice</h4>
+            <p>Hands-on exercises to strengthen understanding.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="learning-step-card" id="step-03-challenge">
+          <div class="step-icon-box">
+            <i data-lucide="flag" style="color: #8B5CF6;"></i>
+          </div>
+          <div class="step-info">
+            <div class="step-num num-purple">03</div>
+            <h4>Challenge</h4>
+            <p>Solve problems and tackle real-world challenges.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="learning-step-card" id="step-04-build">
+          <div class="step-icon-box">
+            <i data-lucide="rocket" style="color: #F59E0B;"></i>
+          </div>
+          <div class="step-info">
+            <div class="step-num num-yellow">04</div>
+            <h4>Build</h4>
+            <p>Create projects and bring your ideas to life.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: Choose Your Path -->
+  <section class="choose-path-section" id="choose-path-section">
+    <div class="container">
+      <h2 class="section-title-standard">Choose Your Path</h2>
+      <p class="section-description">Find the right learning journey for your age and goals.</p>
+
+      <div class="path-cards-grid">
+        <!-- Primary Path -->
+        <a href="/courses.html?group=primary" class="path-card" id="path-card-primary">
+          <div class="path-visual-wrap">
+            <img src="/assets/paths/primary.png" alt="Primary School Coding Track">
+          </div>
+          <div class="path-content">
+            <div class="path-tag tag-primary">PRIMARY</div>
+            <h3>Explore &amp; Create</h3>
+            <p>Spark curiosity and creativity through playful learning and fun projects.</p>
+          </div>
+          <div class="path-arrow-btn">
+            <i data-lucide="arrow-right"></i>
+          </div>
+        </a>
+
+        <!-- Preparatory Path -->
+        <a href="/courses.html?group=preparatory" class="path-card" id="path-card-prep">
+          <div class="path-visual-wrap">
+            <img src="/assets/paths/prep.png" alt="Preparatory School Coding Track">
+          </div>
+          <div class="path-content">
+            <div class="path-tag tag-prep">PREPARATORY</div>
+            <h3>Think &amp; Program</h3>
+            <p>Build strong foundations in logic, programming, and problem solving.</p>
+          </div>
+          <div class="path-arrow-btn">
+            <i data-lucide="arrow-right"></i>
+          </div>
+        </a>
+
+        <!-- Secondary Path -->
+        <a href="/courses.html?group=secondary" class="path-card" id="path-card-secondary">
+          <div class="path-visual-wrap">
+            <img src="/assets/paths/secondary.png" alt="Secondary School Coding Track">
+          </div>
+          <div class="path-content">
+            <div class="path-tag tag-secondary">SECONDARY</div>
+            <h3>Code &amp; Build</h3>
+            <p>Advanced coding, AI, robotics, and innovative technology projects.</p>
+          </div>
+          <div class="path-arrow-btn">
+            <i data-lucide="arrow-right"></i>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: Trust & Future-Ready Bar -->
+  <section class="trust-badges-bar" id="trust-badges-bar">
+    <div class="container">
+      <div class="trust-badges-grid">
+        <div class="trust-badge-item" id="badge-future-ready">
+          <div class="trust-badge-icon">
+            <i data-lucide="sparkles" style="width: 22px; height: 22px;"></i>
+          </div>
+          <div class="trust-badge-text">
+            <h5>Future Ready</h5>
+            <p>Skills for tomorrow's world</p>
+          </div>
+        </div>
+
+        <div class="trust-badge-item" id="badge-expert-guidance">
+          <div class="trust-badge-icon">
+            <i data-lucide="users" style="width: 22px; height: 22px;"></i>
+          </div>
+          <div class="trust-badge-text">
+            <h5>Expert Guidance</h5>
+            <p>Learn from experienced mentors</p>
+          </div>
+        </div>
+
+        <div class="trust-badge-item" id="badge-hands-on">
+          <div class="trust-badge-icon">
+            <i data-lucide="hammer" style="width: 22px; height: 22px;"></i>
+          </div>
+          <div class="trust-badge-text">
+            <h5>Hands-On Learning</h5>
+            <p>Build, test, explore, repeat</p>
+          </div>
+        </div>
+
+        <div class="trust-badge-item" id="badge-safe-supportive">
+          <div class="trust-badge-icon">
+            <i data-lucide="shield-check" style="width: 22px; height: 22px;"></i>
+          </div>
+          <div class="trust-badge-text">
+            <h5>Safe &amp; Supportive</h5>
+            <p>A secure environment to grow and learn</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="landing-footer" id="landing-footer">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+        <div class="landing-logo">
+          <i data-lucide="orbit" style="color: var(--color-cyan); width: 28px; height: 28px;"></i>
+          <span>SPS Code Orbit</span>
+        </div>
+        <div style="display: flex; gap: 2rem;">
+          <a href="/courses.html" style="color: #94A3B8;">Courses</a>
+          <a href="/challenges.html" style="color: #94A3B8;">Challenges</a>
+          <a href="/about.html" style="color: #94A3B8;">About Cody</a>
+          <a href="/login.html" style="color: #94A3B8;">Student Portal</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 SPS Code Orbit. All rights reserved.</p>
+        <p>Built with Pure HTML5, CSS3 &amp; Vanilla JavaScript.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/data/users.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/theme.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+  </script>
+</body>
+</html>

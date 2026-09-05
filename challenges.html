@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coding Challenges Arena - SPS Code Orbit</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/landing.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body style="background: var(--bg-app);">
+
+  <!-- Navbar -->
+  <header class="landing-navbar">
+    <div class="landing-nav-container">
+      <a href="/index.html" class="landing-logo">
+        <div class="landing-logo-icon">
+          <i data-lucide="orbit" style="width: 28px; height: 28px;"></i>
+        </div>
+        <span>SPS Code Orbit</span>
+      </a>
+
+      <nav class="landing-nav-links">
+        <a href="/courses.html" class="landing-nav-link">Courses</a>
+        <a href="/challenges.html" class="landing-nav-link active">Challenges</a>
+        <a href="/about.html" class="landing-nav-link">About</a>
+      </nav>
+
+      <div class="landing-nav-auth">
+        <a href="/student/challenges.html" class="btn btn-primary btn-sm">Enter Arena</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Header -->
+  <div style="background: var(--bg-surface); border-bottom: 1px solid var(--border-light); padding: 3.5rem 1.5rem 2.5rem; text-align: center;">
+    <div class="container">
+      <span class="badge badge-primary" style="margin-bottom: 0.75rem;">LIVE ARENA</span>
+      <h1 style="font-size: 2.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.75rem;">SPS Code Orbit Challenges</h1>
+      <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 1.5rem;">
+        Complete hands-on algorithmic challenges, earn badges, climb the school leaderboard, and earn XP.
+      </p>
+      <a href="/student/challenges.html" class="btn btn-primary btn-lg">Launch Coding Playground</a>
+    </div>
+  </div>
+
+  <div class="container" style="padding: 3rem 1.5rem 5rem; max-width: 1000px;">
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
+      
+      <div class="card" style="padding: 1.75rem; border-radius: var(--radius-lg);">
+        <div style="width: 44px; height: 44px; border-radius: 50%; background: #EFF6FF; color: #2563EB; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+          <i data-lucide="zap" style="width: 22px; height: 22px;"></i>
+        </div>
+        <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem;">Daily Code Sprints</h3>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">Bite-sized logic puzzles to keep your daily streak alive.</p>
+        <a href="/student/challenges.html" class="btn btn-outline btn-sm" style="width: 100%;">Play Sprint</a>
+      </div>
+
+      <div class="card" style="padding: 1.75rem; border-radius: var(--radius-lg);">
+        <div style="width: 44px; height: 44px; border-radius: 50%; background: #F0FDF4; color: #16A34A; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+          <i data-lucide="flag" style="width: 22px; height: 22px;"></i>
+        </div>
+        <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem;">Chapter Capstones</h3>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">In-depth programmatic projects that apply variables, loops, and logic.</p>
+        <a href="/student/challenges.html" class="btn btn-outline btn-sm" style="width: 100%;">View Capstones</a>
+      </div>
+
+      <div class="card" style="padding: 1.75rem; border-radius: var(--radius-lg);">
+        <div style="width: 44px; height: 44px; border-radius: 50%; background: #FEF3C7; color: #D97706; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+          <i data-lucide="trophy" style="width: 22px; height: 22px;"></i>
+        </div>
+        <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem;">School Tournaments</h3>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">Compete against other classes in grade-level hack challenges.</p>
+        <a href="/student/challenges.html" class="btn btn-outline btn-sm" style="width: 100%;">View Tournaments</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="/js/theme.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) window.lucide.createIcons();
+    });
+  </script>
+</body>
+</html>

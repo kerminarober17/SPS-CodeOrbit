@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Operations - SPS Code Orbit</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body style="background: var(--bg-app);">
+
+  <header style="background: rgba(10, 14, 26, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;">
+    <div style="display: flex; align-items: center; gap: 1.5rem;">
+      <a href="/index.html" class="landing-logo" style="text-decoration: none;">
+        <div class="landing-logo-icon">
+          <i data-lucide="orbit" style="width: 26px; height: 26px;"></i>
+        </div>
+        <span>SPS Code Orbit</span>
+      </a>
+      <span class="badge badge-secondary-track">System Administrator</span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <button class="btn btn-outline btn-sm" onclick="window.auth.switchUserRole('student')">Back to Student View</button>
+      <button class="btn btn-primary btn-sm" onclick="showToast('Curriculum schema synchronized with database', 'success')">Deploy Changes</button>
+    </div>
+  </header>
+
+  <main style="max-width: 1200px; margin: 2rem auto; padding: 0 1.5rem 5rem;">
+    
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-bottom: 2rem;">
+      <div class="card" style="padding: 1.5rem; border-radius: var(--radius-lg);">
+        <div style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 700; margin-bottom: 0.5rem;">TOTAL ENROLLED</div>
+        <div style="font-size: 2rem; font-weight: 800; color: var(--text-main);">1,450</div>
+        <div style="font-size: 0.8rem; color: #10B981; margin-top: 0.25rem;">Across all 4 tiers</div>
+      </div>
+
+      <div class="card" style="padding: 1.5rem; border-radius: var(--radius-lg);">
+        <div style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 700; margin-bottom: 0.5rem;">ACTIVE COURSES</div>
+        <div style="font-size: 2rem; font-weight: 800; color: var(--text-main);">9</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">154 Total Lessons</div>
+      </div>
+
+      <div class="card" style="padding: 1.5rem; border-radius: var(--radius-lg);">
+        <div style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 700; margin-bottom: 0.5rem;">DAILY CODE RUNS</div>
+        <div style="font-size: 2rem; font-weight: 800; color: #2563EB;">8,920</div>
+        <div style="font-size: 0.8rem; color: #10B981; margin-top: 0.25rem;">100% Sandbox uptime</div>
+      </div>
+
+      <div class="card" style="padding: 1.5rem; border-radius: var(--radius-lg);">
+        <div style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 700; margin-bottom: 0.5rem;">TEACHER ACCOUNTS</div>
+        <div style="font-size: 2rem; font-weight: 800; color: var(--text-main);">18</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">All verified</div>
+      </div>
+    </div>
+
+    <!-- Course & Curriculum Management Table -->
+    <div class="card" style="padding: 2rem; border-radius: var(--radius-xl);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <div>
+          <h2 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main);">Curriculum Architecture &amp; Courses</h2>
+          <p style="font-size: 0.875rem; color: var(--text-secondary);">Manage chapters, assignments, and exam weights.</p>
+        </div>
+        <button class="btn btn-secondary btn-sm" onclick="showToast('New course modal opened', 'info')">
+          <i data-lucide="plus" style="width: 16px; height: 16px;"></i>
+          <span>Create New Course</span>
+        </button>
+      </div>
+
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+          <thead>
+            <tr style="border-bottom: 1.5px solid var(--border-light); color: var(--text-secondary);">
+              <th style="padding: 0.75rem 1rem;">Course Title</th>
+              <th style="padding: 0.75rem 1rem;">Academic Tier</th>
+              <th style="padding: 0.75rem 1rem;">Chapters</th>
+              <th style="padding: 0.75rem 1rem;">Lessons</th>
+              <th style="padding: 0.75rem 1rem;">Status</th>
+              <th style="padding: 0.75rem 1rem; text-align: right;">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border-light);">
+              <td style="padding: 1rem; font-weight: 700; color: var(--text-main);">Introduction to Programming</td>
+              <td style="padding: 1rem;"><span class="badge badge-secondary-track">Secondary</span></td>
+              <td style="padding: 1rem;">6 Chapters</td>
+              <td style="padding: 1rem;">24 Lessons</td>
+              <td style="padding: 1rem;"><span class="badge badge-success">Published</span></td>
+              <td style="padding: 1rem; text-align: right;"><button class="btn btn-outline btn-sm">Edit</button></td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-light);">
+              <td style="padding: 1rem; font-weight: 700; color: var(--text-main);">Artificial Intelligence Fundamentals</td>
+              <td style="padding: 1rem;"><span class="badge badge-secondary-track">Secondary</span></td>
+              <td style="padding: 1rem;">5 Chapters</td>
+              <td style="padding: 1rem;">18 Lessons</td>
+              <td style="padding: 1rem;"><span class="badge badge-success">Published</span></td>
+              <td style="padding: 1rem; text-align: right;"><button class="btn btn-outline btn-sm">Edit</button></td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-light);">
+              <td style="padding: 1rem; font-weight: 700; color: var(--text-main);">Robotics Essentials</td>
+              <td style="padding: 1rem;"><span class="badge badge-secondary-track">Secondary</span></td>
+              <td style="padding: 1rem;">4 Chapters</td>
+              <td style="padding: 1rem;">16 Lessons</td>
+              <td style="padding: 1rem;"><span class="badge badge-success">Published</span></td>
+              <td style="padding: 1rem; text-align: right;"><button class="btn btn-outline btn-sm">Edit</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="/data/users.js"></script>
+  <script src="/data/courses.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/components.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) window.lucide.createIcons();
+    });
+  </script>
+</body>
+</html>

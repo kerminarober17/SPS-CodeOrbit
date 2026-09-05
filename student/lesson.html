@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 3: Changing Values - SPS Code Orbit</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/lesson.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <div class="app-shell">
+    <aside id="app-sidebar"></aside>
+
+    <div class="main-wrapper">
+      <!-- Top Header Bar with Breadcrumb -->
+      <header class="top-header" style="height: 60px;">
+        <div class="breadcrumb-nav">
+          <a href="/student/courses.html">Introduction to Programming</a>
+          <span>/</span>
+          <a href="/student/chapter.html?course=intro-programming">Variables &amp; Data</a>
+          <span>/</span>
+          <span style="color: var(--text-main); font-weight: 600;">Lesson 3</span>
+        </div>
+
+        <div class="header-actions">
+          <div class="notification-bell" onclick="showToast('No new notifications', 'info')">
+            <i data-lucide="bell" style="width: 18px; height: 18px;"></i>
+            <span class="notification-badge">3</span>
+          </div>
+          <a href="/student/profile.html">
+            <img src="/assets/shady/shady.png" alt="Shady Profile" class="header-user-avatar" style="width: 36px; height: 36px;">
+          </a>
+        </div>
+      </header>
+
+      <!-- Main Lesson Content -->
+      <main class="page-content" style="max-width: 1240px; margin: 0 auto; width: 100%;">
+        
+        <div class="lesson-workspace-layout">
+          <!-- MAIN LESSON COLUMN -->
+          <div class="lesson-main-col">
+            
+            <!-- Lesson Title & Meta -->
+            <div class="lesson-page-header">
+              <div>
+                <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.2rem;">Lesson 3</div>
+                <h1>Changing Values</h1>
+                <div class="lesson-header-meta">
+                  <span><i data-lucide="clock" style="width: 14px; height: 14px; display: inline-block; vertical-align: middle;"></i> 12 min</span>
+                  <span>·</span>
+                  <span><i data-lucide="book-open" style="width: 14px; height: 14px; display: inline-block; vertical-align: middle;"></i> Chapter 2</span>
+                </div>
+              </div>
+
+              <div style="min-width: 180px; text-align: right;">
+                <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.35rem;">Lesson 3 of 5</div>
+                <div class="progress-bar-container" style="height: 6px;">
+                  <div class="progress-bar-fill" style="width: 60%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dialogue Card (Shady & Cody) -->
+            <div class="dialogue-box-card" id="lesson-dialogue-card">
+              <!-- Shady dialogue -->
+              <div class="dialogue-bubble">
+                <img src="/assets/shady/shady.png" alt="Shady" class="dialogue-avatar">
+                <div class="dialogue-text-block">
+                  <div class="dialogue-speaker">Shady:</div>
+                  <div class="dialogue-quote">"I changed the value, but why did the output change too?"</div>
+                </div>
+              </div>
+
+              <!-- Cody dialogue -->
+              <div class="dialogue-bubble">
+                <img src="/assets/cody/cody.png" alt="Cody Robot" class="dialogue-avatar">
+                <div class="dialogue-text-block">
+                  <div class="dialogue-speaker">Cody:</div>
+                  <div class="dialogue-quote">"Let's see what the variable is holding."</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Two-Column Interactive Grid: Row 1 (Concept & Example) -->
+            <div class="lesson-content-split-grid">
+              
+              <!-- Left: Concept Explanation -->
+              <div class="concept-card" id="card-concept-explanation">
+                <div class="panel-header">
+                  <div class="panel-icon-circle">
+                    <i data-lucide="lightbulb" style="width: 18px; height: 18px;"></i>
+                  </div>
+                  <h3>What happens when a value changes?</h3>
+                </div>
+                <div class="concept-body-text">
+                  <p style="margin-bottom: 0.75rem;">
+                    A <strong class="keyword-highlight">variable</strong> acts like a labeled box that can hold a value.
+                  </p>
+                  <p style="margin-bottom: 0.75rem;">
+                    When you assign a new value to a variable, the old value is replaced.
+                  </p>
+                  <p>
+                    Any output or calculation that uses that variable will reflect the new value.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Right: See it in action -->
+              <div class="example-card" id="card-see-it-in-action">
+                <div class="panel-header" style="justify-content: space-between;">
+                  <h3 style="font-size: 1.05rem;">See it in action</h3>
+                </div>
+
+                <div class="code-window-box">
+                  <div class="code-window-header">
+                    <span>Python</span>
+                    <button class="copy-btn" onclick="copyExampleCode()" id="btn-copy-code">
+                      <i data-lucide="copy" style="width: 14px; height: 14px;"></i>
+                      <span>Copy</span>
+                    </button>
+                  </div>
+                  <div class="code-content" id="example-code-view">
+                    <div class="code-line"><span class="code-ln">1</span> <code><span class="code-var">score</span> = <span class="code-val">10</span></code></div>
+                    <div class="code-line"><span class="code-ln">2</span> <code><span class="code-var">score</span> = <span class="code-val">20</span></code></div>
+                    <div class="code-line"><span class="code-ln">3</span> <code><span class="code-func">print</span>(<span class="code-var">score</span>)</code></div>
+                  </div>
+                </div>
+
+                <div class="example-explanation">
+                  <strong style="display: block; margin-bottom: 0.25rem; color: var(--text-main);">What happens here?</strong>
+                  We create a variable called <code>score</code> and give it 10. Then we change it to 20. When we <code>print(score)</code>, Python shows the current value, which is <strong>20</strong>.
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Two-Column Interactive Grid: Row 2 (Try it yourself & Check your understanding) -->
+            <div class="lesson-content-split-grid">
+              
+              <!-- Left: Try it yourself (Interactive code practice) -->
+              <div class="practice-card" id="card-try-it-yourself">
+                <div class="panel-header">
+                  <div class="panel-icon-circle" style="background: #F0FDF4; color: #16A34A;">
+                    <i data-lucide="code" style="width: 18px; height: 18px;"></i>
+                  </div>
+                  <h3>Try it yourself</h3>
+                </div>
+
+                <p class="practice-instructions">
+                  Change the value of score so the program prints 50.
+                </p>
+
+                <div class="interactive-editor-wrap">
+                  <div style="display: flex; justify-content: flex-end;">
+                    <span style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono);">Python ▾</span>
+                  </div>
+                  
+                  <textarea class="editor-textarea" id="student-code-input" spellcheck="false">score = 10
+score = 50
+print(score)</textarea>
+
+                  <div class="output-console" id="editor-output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <div class="output-val" id="editor-output-text">50</div>
+                  </div>
+
+                  <div class="editor-actions-row">
+                    <button class="btn btn-primary btn-sm" onclick="runStudentPractice()" id="btn-run-code" style="padding: 0.45rem 1.25rem;">
+                      <i data-lucide="play" style="width: 14px; height: 14px;"></i>
+                      <span>Run</span>
+                    </button>
+                    <button class="btn btn-secondary btn-sm" onclick="resetStudentPractice()" id="btn-reset-code">
+                      <i data-lucide="rotate-ccw" style="width: 14px; height: 14px;"></i>
+                      <span>Reset</span>
+                    </button>
+                  </div>
+
+                  <!-- Feedback Pill (Default correct matching screenshot) -->
+                  <div class="validation-feedback-pill pill-success" id="practice-feedback-pill">
+                    <i data-lucide="check-circle" style="width: 18px; height: 18px; color: #059669; flex-shrink: 0;"></i>
+                    <div>
+                      <strong style="display: block;">Correct!</strong>
+                      <span>Nice work — your program produced the expected result.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right: Check your understanding (Interactive Quiz) -->
+              <div class="quiz-card" id="card-check-understanding">
+                <div class="panel-header">
+                  <div class="panel-icon-circle" style="background: #EFF6FF; color: #2563EB;">
+                    <i data-lucide="help-circle" style="width: 18px; height: 18px;"></i>
+                  </div>
+                  <h3>Check your understanding</h3>
+                </div>
+
+                <p class="quiz-question-text">
+                  What value will score contain after this code runs?
+                </p>
+
+                <div class="quiz-code-snippet">
+                  <div>1 &nbsp; score = 15</div>
+                  <div>2 &nbsp; score = score + 35</div>
+                  <div>3 &nbsp; score = score - 10</div>
+                </div>
+
+                <div class="quiz-options-grid" id="quiz-options-container">
+                  <button class="quiz-option-btn" onclick="selectQuizOption(this, '15')">
+                    <strong>A</strong> <span>15</span>
+                  </button>
+                  <button class="quiz-option-btn" onclick="selectQuizOption(this, '25')">
+                    <strong>B</strong> <span>25</span>
+                  </button>
+                  <button class="quiz-option-btn selected" onclick="selectQuizOption(this, '40')">
+                    <strong>C</strong> <span>40</span>
+                  </button>
+                  <button class="quiz-option-btn" onclick="selectQuizOption(this, '50')">
+                    <strong>D</strong> <span>50</span>
+                  </button>
+                </div>
+
+                <div style="display: flex; gap: 0.75rem; align-items: center; margin-top: 0.5rem;">
+                  <button class="btn btn-primary btn-sm" onclick="checkQuizAnswer()" id="btn-check-quiz-answer" style="padding: 0.5rem 1.25rem;">
+                    <span>Check Answer</span>
+                  </button>
+                </div>
+
+                <!-- Quiz Success Card -->
+                <div class="validation-feedback-pill pill-success" id="quiz-feedback-pill" style="margin-top: 1rem;">
+                  <i data-lucide="check-circle" style="width: 18px; height: 18px; color: #059669; flex-shrink: 0;"></i>
+                  <div>
+                    <strong style="display: block;">Great job!</strong>
+                    <span>That's correct.</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Bottom Navigation Bar -->
+            <div class="lesson-bottom-bar" id="lesson-footer-nav">
+              <a href="/student/chapter.html?course=intro-programming" class="btn btn-secondary btn-sm" id="btn-prev-lesson" style="padding: 0.5rem 1.2rem;">
+                <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i>
+                <span>Previous Lesson</span>
+              </a>
+
+              <div class="lesson-completion-status">
+                <i data-lucide="check-circle-2" style="width: 22px; height: 22px; color: #10B981;"></i>
+                <span>Lesson Complete</span>
+                <span class="lesson-xp-badge">+25 XP</span>
+              </div>
+
+              <a href="/student/chapter.html?course=intro-programming" class="btn btn-primary btn-sm" id="btn-next-lesson" style="padding: 0.5rem 1.4rem;">
+                <span>Next Lesson</span>
+                <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- RIGHT SIDEBAR (Lesson Outline & Stepper Timeline) -->
+          <aside class="lesson-outline-panel" id="lesson-outline-panel">
+            <div class="outline-header">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+                <h4>Lesson Progress</h4>
+                <span style="font-weight: 700; color: #2563EB; font-size: 0.9rem;">60%</span>
+              </div>
+              <div class="progress-bar-container" style="height: 5px;">
+                <div class="progress-bar-fill" style="width: 60%;"></div>
+              </div>
+            </div>
+
+            <div class="outline-timeline-list">
+              <!-- Step 1 -->
+              <div class="timeline-step-item">
+                <div class="timeline-node node-done">✓</div>
+                <div class="timeline-title">What Is a Variable?</div>
+                <div class="timeline-meta">8 min</div>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="timeline-step-item">
+                <div class="timeline-node node-done">✓</div>
+                <div class="timeline-title">Creating Variables</div>
+                <div class="timeline-meta">10 min</div>
+              </div>
+
+              <!-- Step 3 (Active) -->
+              <div class="timeline-step-item active">
+                <div class="timeline-node node-active">➔</div>
+                <div class="timeline-title" style="color: #2563EB;">Changing Values</div>
+                <div class="timeline-meta">12 min</div>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="timeline-step-item">
+                <div class="timeline-node"><i data-lucide="lock" style="width: 12px; height: 12px;"></i></div>
+                <div class="timeline-title" style="color: var(--text-muted);">Using Variables</div>
+                <div class="timeline-meta">10 min</div>
+              </div>
+
+              <!-- Step 5 -->
+              <div class="timeline-step-item">
+                <div class="timeline-node"><i data-lucide="lock" style="width: 12px; height: 12px;"></i></div>
+                <div class="timeline-title" style="color: var(--text-muted);">Mini Challenge</div>
+                <div class="timeline-meta">15 min</div>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="/data/users.js"></script>
+  <script src="/data/courses.js"></script>
+  <script src="/data/chapters.js"></script>
+  <script src="/data/lessons.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/components.js"></script>
+  <script src="/js/code-runner.js"></script>
+  <script src="/js/gamification.js"></script>
+  <script>
+    let selectedQuizAnswer = '40';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      window.renderSidebar('my-courses');
+    });
+
+    function copyExampleCode() {
+      const code = `score = 10\nscore = 20\nprint(score)`;
+      navigator.clipboard.writeText(code);
+      window.showToast('Code copied to clipboard!', 'info');
+    }
+
+    function runStudentPractice() {
+      const code = document.getElementById('student-code-input').value;
+      const res = window.codeRunner.evaluatePractice(code, '50');
+      
+      const outBox = document.getElementById('editor-output-text');
+      const pill = document.getElementById('practice-feedback-pill');
+
+      outBox.textContent = res.output;
+
+      if (res.passed) {
+        pill.className = 'validation-feedback-pill pill-success';
+        pill.innerHTML = `
+          <i data-lucide="check-circle" style="width: 18px; height: 18px; color: #059669; flex-shrink: 0;"></i>
+          <div>
+            <strong style="display: block;">Correct!</strong>
+            <span>${res.message}</span>
+          </div>
+        `;
+        window.gamification.awardXP(10, 'Practice Problem Solved');
+      } else {
+        pill.className = 'validation-feedback-pill pill-error';
+        pill.innerHTML = `
+          <i data-lucide="alert-circle" style="width: 18px; height: 18px; color: #DC2626; flex-shrink: 0;"></i>
+          <div>
+            <strong style="display: block;">Not quite yet</strong>
+            <span>${res.message}</span>
+          </div>
+        `;
+      }
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function resetStudentPractice() {
+      document.getElementById('student-code-input').value = `score = 10\nscore = 20\nprint(score)`;
+      document.getElementById('editor-output-text').textContent = '20';
+      const pill = document.getElementById('practice-feedback-pill');
+      pill.className = 'validation-feedback-pill';
+      pill.style.display = 'none';
+    }
+
+    function selectQuizOption(btn, val) {
+      document.querySelectorAll('#quiz-options-container .quiz-option-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedQuizAnswer = val;
+    }
+
+    function checkQuizAnswer() {
+      const pill = document.getElementById('quiz-feedback-pill');
+      if (selectedQuizAnswer === '40') {
+        pill.className = 'validation-feedback-pill pill-success';
+        pill.innerHTML = `
+          <i data-lucide="check-circle" style="width: 18px; height: 18px; color: #059669; flex-shrink: 0;"></i>
+          <div>
+            <strong style="display: block;">Great job!</strong>
+            <span>That's correct. 15 + 35 = 50, then 50 - 10 = 40.</span>
+          </div>
+        `;
+        window.gamification.awardXP(15, 'Quiz Answer Correct');
+      } else {
+        pill.className = 'validation-feedback-pill pill-error';
+        pill.innerHTML = `
+          <i data-lucide="alert-circle" style="width: 18px; height: 18px; color: #DC2626; flex-shrink: 0;"></i>
+          <div>
+            <strong style="display: block;">Try again!</strong>
+            <span>Trace the values step by step: start with 15, add 35, then subtract 10.</span>
+          </div>
+        `;
+      }
+      pill.style.display = 'flex';
+      if (window.lucide) window.lucide.createIcons();
+    }
+  </script>
+</body>
+</html>

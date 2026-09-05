@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - SPS Code Orbit</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <div class="app-shell">
+    <!-- Persistent Sidebar -->
+    <aside id="app-sidebar"></aside>
+
+    <!-- Main Content Area -->
+    <div class="main-wrapper">
+      <!-- Top Header -->
+      <header id="top-header"></header>
+
+      <!-- Dashboard Body Content -->
+      <main class="page-content" id="dashboard-main-content">
+        <div class="dashboard-grid">
+          
+          <!-- 1. CONTINUE LEARNING BANNER -->
+          <section aria-labelledby="continue-learning-title">
+            <div class="section-label">CONTINUE LEARNING</div>
+            <div class="continue-learning-banner" id="continue-learning-card">
+              <div class="continue-banner-glow"></div>
+              
+              <div class="continue-banner-content">
+                <span class="banner-track-tag" id="continue-track-tag">Secondary</span>
+                <h2 class="continue-banner-title" id="continue-course-title">Introduction to Programming</h2>
+                <div class="continue-banner-meta" id="continue-lesson-subtitle">Chapter 2 · Lesson 3</div>
+
+                <div class="continue-progress-wrap">
+                  <div class="continue-progress-bar-row">
+                    <div class="progress-bar-container">
+                      <div class="progress-bar-fill" style="width: 62%;" id="continue-progress-fill"></div>
+                    </div>
+                    <span class="continue-progress-percent" id="continue-progress-text">62%</span>
+                  </div>
+                </div>
+
+                <a href="/student/lesson.html?id=lesson-ch2-l3" class="btn btn-primary" id="btn-continue-learning-action">
+                  <span>Continue Learning</span>
+                  <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+                </a>
+              </div>
+
+              <div class="continue-banner-visual">
+                <img src="/assets/cody/cody.png" alt="Cody Robot Companion" class="continue-robot-img" id="continue-cody-img">
+                <div class="continue-floating-badge c-badge-1">&lt;/&gt;</div>
+                <div class="continue-floating-badge c-badge-2">{ }</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 2. MY COURSES -->
+          <section aria-labelledby="my-courses-header">
+            <div class="section-header-row">
+              <div class="section-label" style="margin-bottom: 0;">MY COURSES</div>
+              <a href="/student/courses.html" class="view-all-link" id="link-view-all-courses">
+                <span>View all courses</span>
+                <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+              </a>
+            </div>
+
+            <div class="courses-grid-4" id="dashboard-courses-list">
+              <!-- Course 1 -->
+              <div class="course-card" id="card-course-intro-prog">
+                <div class="course-card-thumb-wrap">
+                  <img src="/assets/courses/prog.png" alt="Introduction to Programming">
+                </div>
+                <div class="course-card-body">
+                  <div class="course-card-header">
+                    <h3 class="course-card-title">Introduction to Programming</h3>
+                    <i data-lucide="more-vertical" class="course-dots-menu"></i>
+                  </div>
+                  <span class="badge badge-secondary-track course-card-tag">Secondary</span>
+                  
+                  <div class="course-progress-block">
+                    <div class="course-progress-row">
+                      <div class="progress-bar-container">
+                        <div class="progress-bar-fill" style="width: 62%;"></div>
+                      </div>
+                      <span class="course-percent-label">62%</span>
+                    </div>
+
+                    <div class="course-card-footer">
+                      <span class="course-lesson-indicator">Chapter 2 · Lesson 3</span>
+                      <a href="/student/lesson.html?id=lesson-ch2-l3" class="course-action-link">
+                        <span>Continue</span>
+                        <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Course 2 -->
+              <div class="course-card" id="card-course-ai">
+                <div class="course-card-thumb-wrap">
+                  <img src="/assets/courses/ai.png" alt="Artificial Intelligence Fundamentals">
+                </div>
+                <div class="course-card-body">
+                  <div class="course-card-header">
+                    <h3 class="course-card-title">Artificial Intelligence Fundamentals</h3>
+                    <i data-lucide="more-vertical" class="course-dots-menu"></i>
+                  </div>
+                  <span class="badge badge-secondary-track course-card-tag">Secondary</span>
+                  
+                  <div class="course-progress-block">
+                    <div class="course-progress-row">
+                      <div class="progress-bar-container">
+                        <div class="progress-bar-fill" style="width: 45%;"></div>
+                      </div>
+                      <span class="course-percent-label">45%</span>
+                    </div>
+
+                    <div class="course-card-footer">
+                      <span class="course-lesson-indicator">Chapter 1 · Lesson 2</span>
+                      <a href="/student/chapter.html?course=ai-fundamentals" class="course-action-link">
+                        <span>Continue</span>
+                        <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Course 3 -->
+              <div class="course-card" id="card-course-robotics">
+                <div class="course-card-thumb-wrap">
+                  <img src="/assets/courses/robotics.png" alt="Robotics Essentials">
+                </div>
+                <div class="course-card-body">
+                  <div class="course-card-header">
+                    <h3 class="course-card-title">Robotics Essentials</h3>
+                    <i data-lucide="more-vertical" class="course-dots-menu"></i>
+                  </div>
+                  <span class="badge badge-secondary-track course-card-tag">Secondary</span>
+                  
+                  <div class="course-progress-block">
+                    <div class="course-progress-row">
+                      <div class="progress-bar-container">
+                        <div class="progress-bar-fill" style="width: 30%;"></div>
+                      </div>
+                      <span class="course-percent-label">30%</span>
+                    </div>
+
+                    <div class="course-card-footer">
+                      <span class="course-lesson-indicator">Chapter 1 · Lesson 1</span>
+                      <a href="/student/chapter.html?course=robotics-essentials" class="course-action-link">
+                        <span>Continue</span>
+                        <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Course 4 -->
+              <div class="course-card" id="card-course-design">
+                <div class="course-card-thumb-wrap">
+                  <img src="/assets/courses/design.png" alt="Digital Design & Creativity">
+                </div>
+                <div class="course-card-body">
+                  <div class="course-card-header">
+                    <h3 class="course-card-title">Digital Design &amp; Creativity</h3>
+                    <i data-lucide="more-vertical" class="course-dots-menu"></i>
+                  </div>
+                  <span class="badge badge-secondary-track course-card-tag">Secondary</span>
+                  
+                  <div class="course-progress-block">
+                    <div class="course-progress-row">
+                      <div class="progress-bar-container">
+                        <div class="progress-bar-fill" style="width: 25%;"></div>
+                      </div>
+                      <span class="course-percent-label">25%</span>
+                    </div>
+
+                    <div class="course-card-footer">
+                      <span class="course-lesson-indicator">Chapter 1 · Lesson 1</span>
+                      <a href="/student/chapter.html?course=digital-design" class="course-action-link">
+                        <span>Continue</span>
+                        <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 3. PROGRESS & RECENT ACTIVITY -->
+          <div class="dashboard-dual-row">
+            <!-- Progress Stats Box -->
+            <div class="stats-card-block" id="stats-overview-block">
+              <div class="section-label" style="margin-bottom: 0.5rem;">YOUR PROGRESS</div>
+
+              <div class="stats-content-grid">
+                <!-- Circular Chart -->
+                <div class="donut-stat-col">
+                  <div class="donut-chart-wrap">
+                    <svg viewBox="0 0 90 90">
+                      <circle class="donut-bg-circle" cx="45" cy="45" r="36"></circle>
+                      <circle class="donut-fill-circle" cx="45" cy="45" r="36" style="stroke-dashoffset: 95;"></circle>
+                    </svg>
+                    <div class="donut-center-label" id="donut-percent-text">58%</div>
+                  </div>
+                  <div class="donut-subtext">Overall Progress<br>Across all courses</div>
+                </div>
+
+                <!-- Metric 1: Lessons Completed -->
+                <div class="metric-stat-item">
+                  <div class="metric-header">Lessons Completed</div>
+                  <div class="metric-value-row">
+                    <i data-lucide="book-check" style="width: 22px; height: 22px; color: var(--color-primary);"></i>
+                    <span id="metric-lessons-completed">24</span>
+                  </div>
+                  <div class="metric-sub">Lessons</div>
+                </div>
+
+                <!-- Metric 2: XP -->
+                <div class="metric-stat-item">
+                  <div class="metric-header">XP</div>
+                  <div class="metric-value-row">
+                    <i data-lucide="star" style="width: 22px; height: 22px; color: #F59E0B; fill: #F59E0B;"></i>
+                    <span id="metric-total-xp">2,450</span>
+                  </div>
+                  <div class="metric-sub">Total XP</div>
+                </div>
+
+                <!-- Metric 3: Current Streak -->
+                <div class="metric-stat-item">
+                  <div class="metric-header">Current Streak</div>
+                  <div class="metric-value-row">
+                    <i data-lucide="flame" style="width: 22px; height: 22px; color: #EF4444; fill: #EF4444;"></i>
+                    <span id="metric-current-streak">7</span>
+                  </div>
+                  <div class="metric-sub">Days</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Activity Box -->
+            <div class="stats-card-block" id="recent-activity-block">
+              <div class="section-header-row" style="margin-bottom: 0.5rem;">
+                <div class="section-label" style="margin-bottom: 0;">RECENT ACTIVITY</div>
+                <a href="/student/progress.html" class="view-all-link">
+                  <span>View all activity</span>
+                  <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+                </a>
+              </div>
+
+              <div class="activity-feed-list">
+                <!-- Activity 1 -->
+                <div class="activity-item">
+                  <div class="activity-icon-badge act-green">
+                    <i data-lucide="check-circle-2" style="width: 18px; height: 18px;"></i>
+                  </div>
+                  <div class="activity-details">
+                    <div class="activity-title">Lesson completed</div>
+                    <div class="activity-meta">Variables and Data Types</div>
+                  </div>
+                  <div class="activity-time">2h ago</div>
+                </div>
+
+                <!-- Activity 2 -->
+                <div class="activity-item">
+                  <div class="activity-icon-badge act-purple">
+                    <i data-lucide="award" style="width: 18px; height: 18px;"></i>
+                  </div>
+                  <div class="activity-details">
+                    <div class="activity-title">Challenge completed</div>
+                    <div class="activity-meta">Code Challenge: Variables</div>
+                  </div>
+                  <div class="activity-time">Yesterday</div>
+                </div>
+
+                <!-- Activity 3 -->
+                <div class="activity-item">
+                  <div class="activity-icon-badge act-blue">
+                    <i data-lucide="file-text" style="width: 18px; height: 18px;"></i>
+                  </div>
+                  <div class="activity-details">
+                    <div class="activity-title">Exam completed</div>
+                    <div class="activity-meta">Chapter 1 Quiz</div>
+                  </div>
+                  <div class="activity-time">2 days ago</div>
+                </div>
+
+                <!-- Activity 4 -->
+                <div class="activity-item">
+                  <div class="activity-icon-badge act-yellow">
+                    <i data-lucide="trophy" style="width: 18px; height: 18px;"></i>
+                  </div>
+                  <div class="activity-details">
+                    <div class="activity-title">Achievement unlocked</div>
+                    <div class="activity-meta">Problem Solver</div>
+                  </div>
+                  <div class="activity-time">3 days ago</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="/data/users.js"></script>
+  <script src="/data/courses.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/components.js"></script>
+  <script src="/js/gamification.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      window.renderSidebar('dashboard');
+      window.renderHeader();
+      
+      // Update dynamic user stats if any
+      const user = window.auth.getCurrentUser();
+      if (user) {
+        document.getElementById('metric-total-xp').textContent = Number(user.xp || 2450).toLocaleString();
+        document.getElementById('metric-lessons-completed').textContent = user.lessonsCompleted || 24;
+        document.getElementById('metric-current-streak').textContent = user.streak || 7;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration - SPS Code Orbit</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body style="background: var(--bg-app); min-height: 100vh; display: flex; flex-direction: column;">
+
+  <!-- Header -->
+  <header style="background: rgba(10, 14, 26, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;">
+    <a href="/index.html" class="landing-logo" style="text-decoration: none;">
+      <div class="landing-logo-icon">
+        <i data-lucide="orbit" style="width: 26px; height: 26px;"></i>
+      </div>
+      <span>SPS Code Orbit</span>
+    </a>
+    <a href="/login.html" class="btn btn-outline btn-sm">Already have an account? Log In</a>
+  </header>
+
+  <!-- Form Container -->
+  <div style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 2.5rem 1.5rem;">
+    <div class="card" style="max-width: 520px; width: 100%; padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg);">
+      
+      <div style="text-align: center; margin-bottom: 1.75rem;">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: #EFF6FF; color: #2563EB; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+          <i data-lucide="user-plus" style="width: 28px; height: 28px;"></i>
+        </div>
+        <h1 style="font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.35rem;">Join SPS Code Orbit</h1>
+        <p style="font-size: 0.9rem; color: var(--text-secondary);">Create your student profile and begin your journey.</p>
+      </div>
+
+      <form id="signup-form" onsubmit="handleSignupSubmit(event)" style="display: flex; flex-direction: column; gap: 1.1rem;">
+        <div>
+          <label style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-main); margin-bottom: 0.35rem;">Full Name</label>
+          <input type="text" id="reg-fullname" class="input-field" placeholder="e.g. Shady Ahmed" required>
+        </div>
+
+        <div>
+          <label style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-main); margin-bottom: 0.35rem;">Username</label>
+          <input type="text" id="reg-username" class="input-field" placeholder="Choose a unique username" required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div>
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-main); margin-bottom: 0.35rem;">Academic Level</label>
+            <select id="reg-academic-group" class="input-field" onchange="handleAcademicGroupChange()" required>
+              <option value="secondary" selected>Secondary</option>
+              <option value="preparatory">Preparatory</option>
+              <option value="primary_5_6">Primary 5–6</option>
+              <option value="primary_3_4">Primary 3–4</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-main); margin-bottom: 0.35rem;">Grade</label>
+            <select id="reg-grade" class="input-field" onchange="handleGradeChange()" required>
+              <option value="Secondary 2" selected>Secondary 2</option>
+              <option value="Secondary 1">Secondary 1</option>
+              <option value="Secondary 3">Secondary 3</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-main); margin-bottom: 0.35rem;">Class</label>
+          <select id="reg-class" class="input-field" required>
+            <option value="Class D" selected>Class D</option>
+            <option value="Class A">Class A</option>
+            <option value="Class B">Class B</option>
+            <option value="Class C">Class C</option>
+          </select>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div>
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-main); margin-bottom: 0.35rem;">Password</label>
+            <input type="password" id="reg-password" class="input-field" placeholder="••••••••" required>
+          </div>
+          <div>
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-main); margin-bottom: 0.35rem;">Confirm Password</label>
+            <input type="password" id="reg-confirm-password" class="input-field" placeholder="••••••••" required>
+          </div>
+        </div>
+
+        <div id="signup-error-alert" style="display: none; padding: 0.75rem 1rem; background: #FEF2F2; border: 1px solid #FCA5A5; color: #DC2626; border-radius: var(--radius-md); font-size: 0.85rem;"></div>
+
+        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 0.5rem;">
+          <span>Create Account &amp; Start</span>
+          <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/data/users.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/theme.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) window.lucide.createIcons();
+    });
+
+    function handleAcademicGroupChange() {
+      const groupKey = document.getElementById('reg-academic-group').value;
+      const groupData = window.ACADEMIC_STRUCTURE[groupKey];
+      const gradeSelect = document.getElementById('reg-grade');
+      
+      gradeSelect.innerHTML = groupData.grades.map(g => `<option value="${g.label}">${g.label}</option>`).join('');
+      handleGradeChange();
+    }
+
+    function handleGradeChange() {
+      const groupKey = document.getElementById('reg-academic-group').value;
+      const gradeVal = document.getElementById('reg-grade').value;
+      const groupData = window.ACADEMIC_STRUCTURE[groupKey];
+      const gradeObj = groupData.grades.find(g => g.label === gradeVal) || groupData.grades[0];
+      
+      const classSelect = document.getElementById('reg-class');
+      classSelect.innerHTML = gradeObj.classes.map(c => `<option value="${c}">${c}</option>`).join('');
+    }
+
+    function handleSignupSubmit(e) {
+      e.preventDefault();
+      const fullName = document.getElementById('reg-fullname').value;
+      const username = document.getElementById('reg-username').value;
+      const academicGroup = document.getElementById('reg-academic-group').value;
+      const grade = document.getElementById('reg-grade').value;
+      const className = document.getElementById('reg-class').value;
+      const password = document.getElementById('reg-password').value;
+      const confirmPassword = document.getElementById('reg-confirm-password').value;
+
+      const res = window.auth.register({
+        fullName, username, password, confirmPassword, academicGroup, grade, className
+      });
+
+      if (res.success) {
+        window.location.href = '/student/dashboard.html';
+      } else {
+        const alertBox = document.getElementById('signup-error-alert');
+        alertBox.textContent = res.message;
+        alertBox.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>

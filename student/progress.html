@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress &amp; Analytics - SPS Code Orbit</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <div class="app-shell">
+    <aside id="app-sidebar"></aside>
+
+    <div class="main-wrapper">
+      <header id="top-header"></header>
+
+      <main class="page-content" style="max-width: 1200px; margin: 0 auto; width: 100%;">
+        
+        <div style="margin-bottom: 2rem;">
+          <span class="badge badge-primary" style="margin-bottom: 0.5rem;">PERFORMANCE METRICS</span>
+          <h1 style="font-size: 2rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.25rem;">Your Learning Orbit</h1>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">Track your computational skills, mastery levels, and achievements.</p>
+        </div>
+
+        <!-- Metric Highlights Row -->
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-bottom: 2rem;">
+          
+          <div class="card" style="padding: 1.5rem; border-radius: var(--radius-lg);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-secondary);">OVERALL PROGRESS</span>
+              <i data-lucide="pie-chart" style="width: 20px; height: 20px; color: var(--color-primary);"></i>
+            </div>
+            <div style="font-size: 2.25rem; font-weight: 800; color: var(--text-main);">58%</div>
+            <div style="font-size: 0.8rem; color: #10B981; font-weight: 600; margin-top: 0.25rem;">+12% this week</div>
+          </div>
+
+          <div class="card" style="padding: 1.5rem; border-radius: var(--radius-lg);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-secondary);">TOTAL XP</span>
+              <i data-lucide="star" style="width: 20px; height: 20px; color: #F59E0B; fill: #F59E0B;"></i>
+            </div>
+            <div style="font-size: 2.25rem; font-weight: 800; color: var(--text-main);" id="prog-xp-val">2,450</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Level 5 Explorer</div>
+          </div>
+
+          <div class="card" style="padding: 1.5rem; border-radius: var(--radius-lg);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-secondary);">STREAK</span>
+              <i data-lucide="flame" style="width: 20px; height: 20px; color: #EF4444; fill: #EF4444;"></i>
+            </div>
+            <div style="font-size: 2.25rem; font-weight: 800; color: var(--text-main);">7 Days</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Personal best: 14 days</div>
+          </div>
+
+          <div class="card" style="padding: 1.5rem; border-radius: var(--radius-lg);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-secondary);">COMPLETED</span>
+              <i data-lucide="check-circle-2" style="width: 20px; height: 20px; color: #10B981;"></i>
+            </div>
+            <div style="font-size: 2.25rem; font-weight: 800; color: var(--text-main);">24 Lessons</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Across 4 active tracks</div>
+          </div>
+
+        </div>
+
+        <!-- Badges & Achievements -->
+        <div class="card" style="padding: 2rem; border-radius: var(--radius-xl); margin-bottom: 2rem;">
+          <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 1.25rem;">Unlocked Achievements</h3>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;">
+            
+            <div style="background: var(--bg-surface-secondary); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 1.25rem; text-align: center;">
+              <div style="width: 50px; height: 50px; border-radius: 50%; background: #EFF6FF; color: #2563EB; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 0.75rem;">
+                <i data-lucide="award" style="width: 26px; height: 26px;"></i>
+              </div>
+              <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.25rem;">Problem Solver</h4>
+              <p style="font-size: 0.8rem; color: var(--text-secondary);">Solved 10 code challenges on first try</p>
+            </div>
+
+            <div style="background: var(--bg-surface-secondary); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 1.25rem; text-align: center;">
+              <div style="width: 50px; height: 50px; border-radius: 50%; background: #FEF3C7; color: #D97706; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 0.75rem;">
+                <i data-lucide="zap" style="width: 26px; height: 26px;"></i>
+              </div>
+              <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.25rem;">Speed Coder</h4>
+              <p style="font-size: 0.8rem; color: var(--text-secondary);">Completed a lesson in under 5 minutes</p>
+            </div>
+
+            <div style="background: var(--bg-surface-secondary); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 1.25rem; text-align: center;">
+              <div style="width: 50px; height: 50px; border-radius: 50%; background: #FEE2E2; color: #DC2626; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 0.75rem;">
+                <i data-lucide="flame" style="width: 26px; height: 26px;"></i>
+              </div>
+              <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.25rem;">7-Day Orbit</h4>
+              <p style="font-size: 0.8rem; color: var(--text-secondary);">Maintained a 7-day daily learning streak</p>
+            </div>
+
+            <div style="background: var(--bg-surface-secondary); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 1.25rem; text-align: center;">
+              <div style="width: 50px; height: 50px; border-radius: 50%; background: #F0FDF4; color: #16A34A; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 0.75rem;">
+                <i data-lucide="orbit" style="width: 26px; height: 26px;"></i>
+              </div>
+              <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.25rem;">Master Explorer</h4>
+              <p style="font-size: 0.8rem; color: var(--text-secondary);">Enrolled in courses across AI &amp; Robotics</p>
+            </div>
+
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="/data/users.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/components.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      window.renderSidebar('progress');
+      window.renderHeader('Progress & Analytics', 'Track your computational skills, mastery levels, and achievements.');
+      
+      const user = window.auth.getCurrentUser();
+      if (user) {
+        document.getElementById('prog-xp-val').textContent = Number(user.xp || 2450).toLocaleString();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Courses - SPS Code Orbit</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/landing.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body style="background: var(--bg-app);">
+
+  <!-- Navbar -->
+  <header class="landing-navbar">
+    <div class="landing-nav-container">
+      <a href="/index.html" class="landing-logo">
+        <div class="landing-logo-icon">
+          <i data-lucide="orbit" style="width: 28px; height: 28px;"></i>
+        </div>
+        <span>SPS Code Orbit</span>
+      </a>
+
+      <nav class="landing-nav-links">
+        <a href="/courses.html" class="landing-nav-link active">Courses</a>
+        <a href="/challenges.html" class="landing-nav-link">Challenges</a>
+        <a href="/about.html" class="landing-nav-link">About</a>
+      </nav>
+
+      <div class="landing-nav-auth">
+        <a href="/student/dashboard.html" class="btn btn-primary btn-sm">Go to Dashboard</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Header -->
+  <div style="background: var(--bg-surface); border-bottom: 1px solid var(--border-light); padding: 3.5rem 1.5rem 2.5rem; text-align: center;">
+    <div class="container">
+      <span class="badge badge-primary" style="margin-bottom: 0.75rem;">CURRICULUM DIRECTORY</span>
+      <h1 style="font-size: 2.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.75rem;">Explore All Courses</h1>
+      <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
+        From early visual coding to advanced algorithmic problem solving, artificial intelligence, and robotics.
+      </p>
+
+      <!-- Category Tabs -->
+      <div style="display: flex; justify-content: center; gap: 0.5rem; margin-top: 2rem; flex-wrap: wrap;" id="category-filter-tabs">
+        <button class="btn btn-primary btn-sm" onclick="filterByGroup('all', this)">All Paths</button>
+        <button class="btn btn-secondary btn-sm" onclick="filterByGroup('secondary', this)">Secondary</button>
+        <button class="btn btn-secondary btn-sm" onclick="filterByGroup('preparatory', this)">Preparatory</button>
+        <button class="btn btn-secondary btn-sm" onclick="filterByGroup('primary_5_6', this)">Primary 5–6</button>
+        <button class="btn btn-secondary btn-sm" onclick="filterByGroup('primary_3_4', this)">Primary 3–4</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Course Catalog Grid -->
+  <div class="container" style="padding: 3rem 1.5rem 5rem;">
+    <div class="courses-grid-4" style="grid-template-columns: repeat(3, 1fr);" id="catalog-courses-grid"></div>
+  </div>
+
+  <script src="/data/courses.js"></script>
+  <script src="/js/theme.js"></script>
+  <script>
+    let activeFilter = 'all';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCatalog();
+    });
+
+    function renderCatalog() {
+      const grid = document.getElementById('catalog-courses-grid');
+      const courses = window.COURSES_DATA.filter(c => activeFilter === 'all' || c.academicGroup === activeFilter);
+
+      grid.innerHTML = courses.map(c => `
+        <div class="course-card">
+          <div class="course-card-thumb-wrap" style="height: 160px;">
+            <img src="${c.image}" alt="${c.title}">
+          </div>
+          <div class="course-card-body">
+            <div class="course-card-header">
+              <h3 class="course-card-title">${c.title}</h3>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.85rem; line-height: 1.45;">
+              ${c.description}
+            </p>
+            <span class="badge badge-secondary-track course-card-tag">${c.academicGroupLabel}</span>
+            
+            <div style="display: flex; align-items: center; gap: 1.25rem; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
+              <span style="display: inline-flex; align-items: center; gap: 0.35rem;"><i data-lucide="book-open" style="width: 14px; height: 14px;"></i> ${c.chaptersCount} Chapters</span>
+              <span style="display: inline-flex; align-items: center; gap: 0.35rem;"><i data-lucide="play-circle" style="width: 14px; height: 14px;"></i> ${c.lessonsCount} Lessons</span>
+            </div>
+
+            <a href="/student/chapter.html?course=${c.id}" class="btn btn-primary btn-sm" style="width: 100%; border-radius: var(--radius-md); padding: 0.65rem 1rem;">
+              <span>${c.progress > 0 ? 'Continue Learning' : 'Start Course'}</span>
+              <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+            </a>
+          </div>
+        </div>
+      `).join('');
+
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function filterByGroup(group, btn) {
+      activeFilter = group;
+      document.querySelectorAll('#category-filter-tabs button').forEach(b => {
+        b.className = 'btn btn-secondary btn-sm';
+      });
+      btn.className = 'btn btn-primary btn-sm';
+      renderCatalog();
+    }
+  </script>
+</body>
+</html>

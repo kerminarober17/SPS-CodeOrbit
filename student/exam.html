@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 2 Exam - SPS Code Orbit</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/exam.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body style="background: var(--bg-app); min-height: 100vh;">
+
+  <!-- Exam Top Navigation -->
+  <header style="background: rgba(10, 14, 26, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <a href="/student/chapter.html?course=intro-programming" class="btn btn-secondary btn-sm" style="padding: 0.4rem 0.8rem;">
+        <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i>
+        <span>Exit Exam</span>
+      </a>
+      <div style="font-weight: 700; color: var(--text-main); font-size: 1.1rem;">Chapter 2 Cumulative Assessment</div>
+    </div>
+
+    <div class="exam-timer-box" id="exam-timer-display">
+      <i data-lucide="timer" style="width: 18px; height: 18px;"></i>
+      <span id="timer-text">14:45</span>
+    </div>
+  </header>
+
+  <main style="padding: 2.5rem 1.5rem 5rem;">
+    <div class="exam-container">
+
+      <!-- Exam Banner -->
+      <div class="exam-banner" id="exam-banner-card">
+        <div class="exam-banner-left">
+          <span style="font-size: 0.8rem; font-weight: 800; color: #38BDF8; letter-spacing: 0.05em; text-transform: uppercase;">Assessment Mode</span>
+          <h1>Chapter 2 Exam: Variables &amp; Logic</h1>
+          <p>Cumulative examination covering Chapters 1 and 2. Answer all questions carefully.</p>
+        </div>
+        <div style="background: rgba(255,255,255,0.08); border-radius: var(--radius-md); padding: 1rem 1.5rem; text-align: center;">
+          <div style="font-size: 1.75rem; font-weight: 800; color: #38BDF8;">+50 XP</div>
+          <div style="font-size: 0.8rem; color: #94A3B8;">Passing Reward</div>
+        </div>
+      </div>
+
+      <!-- Question Box Area -->
+      <div id="exam-active-view">
+        <!-- Progress bar -->
+        <div class="exam-progress-card">
+          <div style="font-weight: 600; color: var(--text-main); font-size: 0.9rem;" id="q-counter-label">Question 1 of 5</div>
+          <div style="width: 200px;" class="progress-bar-container">
+            <div class="progress-bar-fill" style="width: 20%;" id="exam-progress-bar"></div>
+          </div>
+        </div>
+
+        <!-- Question 1 -->
+        <div class="question-card" id="question-card-container">
+          <div class="question-header-row">
+            <div class="question-num-tag" id="q-tag">QUESTION 1</div>
+            <div class="question-points-badge">10 Points</div>
+          </div>
+
+          <div class="question-prompt" id="q-prompt">
+            What will be the output of the following Python program after execution?
+          </div>
+
+          <div class="question-code-block" id="q-code">
+score = 10
+score = score + 25
+score = score - 5
+print(score)
+          </div>
+
+          <div class="options-list" id="q-options-list">
+            <div class="option-choice-item" onclick="selectExamOption(0)">
+              <div class="option-indicator">A</div>
+              <div class="option-text">10</div>
+            </div>
+            <div class="option-choice-item" onclick="selectExamOption(1)">
+              <div class="option-indicator">B</div>
+              <div class="option-text">25</div>
+            </div>
+            <div class="option-choice-item" onclick="selectExamOption(2)">
+              <div class="option-indicator">C</div>
+              <div class="option-text">30</div>
+            </div>
+            <div class="option-choice-item" onclick="selectExamOption(3)">
+              <div class="option-indicator">D</div>
+              <div class="option-text">35</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Actions -->
+        <div class="exam-nav-bar">
+          <button class="btn btn-secondary" onclick="prevExamQuestion()" id="btn-exam-prev" disabled>
+            <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i>
+            <span>Previous</span>
+          </button>
+
+          <button class="btn btn-primary" onclick="nextExamQuestion()" id="btn-exam-next">
+            <span>Next Question</span>
+            <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Result Card (Hidden Initially) -->
+      <div id="exam-result-view" style="display: none;">
+        <div class="exam-result-card">
+          <div class="result-trophy-icon">
+            <i data-lucide="award" style="width: 44px; height: 44px;"></i>
+          </div>
+          <h2 style="font-size: 2rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">Exam Completed!</h2>
+          <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Outstanding work! You demonstrated mastery of variables and sequential execution.</p>
+
+          <div class="result-score-big" id="result-score-text">100%</div>
+          <div class="result-xp-reward">
+            <i data-lucide="star" style="fill: #2563EB; width: 20px; height: 20px;"></i>
+            <span>+50 XP Earned</span>
+          </div>
+
+          <div style="display: flex; gap: 1rem;">
+            <a href="/student/chapter.html?course=intro-programming" class="btn btn-secondary">Back to Chapter</a>
+            <a href="/student/dashboard.html" class="btn btn-primary">Return to Dashboard</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="/data/users.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/gamification.js"></script>
+  <script>
+    const EXAM_QUESTIONS = [
+      {
+        prompt: "What will be the output of the following Python program after execution?",
+        code: "score = 10\nscore = score + 25\nscore = score - 5\nprint(score)",
+        options: ["10", "25", "30", "35"],
+        correctIndex: 2
+      },
+      {
+        prompt: "Which of the following creates a string variable named 'role' with the value 'Coder'?",
+        code: "A) role == \"Coder\"\nB) role = \"Coder\"\nC) \"Coder\" = role\nD) var role := Coder",
+        options: ["role == \"Coder\"", "role = \"Coder\"", "\"Coder\" = role", "var role := Coder"],
+        correctIndex: 1
+      },
+      {
+        prompt: "What happens when a new value is assigned to an existing variable in Python?",
+        code: "x = 5\nx = 10",
+        options: [
+          "An error is thrown because variables cannot change",
+          "The variable stores both 5 and 10 simultaneously",
+          "The old value (5) is replaced by the new value (10)",
+          "A new variable named x_2 is created automatically"
+        ],
+        correctIndex: 2
+      },
+      {
+        prompt: "What is the expected result of this algorithm?",
+        code: "width = 4\nheight = 5\narea = width * height\nprint(area)",
+        options: ["9", "20", "45", "Error: cannot multiply variables"],
+        correctIndex: 1
+      },
+      {
+        prompt: "Which variable name follows standard Python snake_case conventions?",
+        code: "1) student_score\n2) StudentScore\n3) studentScore\n4) student-score",
+        options: ["student_score", "StudentScore", "studentScore", "student-score"],
+        correctIndex: 0
+      }
+    ];
+
+    let currentQIndex = 0;
+    let userAnswers = {};
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) window.lucide.createIcons();
+      renderQuestion();
+      startTimer();
+    });
+
+    function startTimer() {
+      let seconds = 15 * 60;
+      const display = document.getElementById('timer-text');
+      setInterval(() => {
+        if (seconds <= 0) return;
+        seconds--;
+        const m = Math.floor(seconds / 60);
+        const s = seconds % 60;
+        display.textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+      }, 1000);
+    }
+
+    function renderQuestion() {
+      const q = EXAM_QUESTIONS[currentQIndex];
+      document.getElementById('q-counter-label').textContent = `Question ${currentQIndex + 1} of ${EXAM_QUESTIONS.length}`;
+      document.getElementById('q-tag').textContent = `QUESTION ${currentQIndex + 1}`;
+      document.getElementById('q-prompt').textContent = q.prompt;
+      document.getElementById('q-code').textContent = q.code;
+      document.getElementById('exam-progress-bar').style.width = `${((currentQIndex + 1) / EXAM_QUESTIONS.length) * 100}%`;
+
+      const list = document.getElementById('q-options-list');
+      const indicators = ['A', 'B', 'C', 'D'];
+      list.innerHTML = q.options.map((opt, i) => `
+        <div class="option-choice-item ${userAnswers[currentQIndex] === i ? 'selected' : ''}" onclick="selectExamOption(${i})">
+          <div class="option-indicator">${indicators[i]}</div>
+          <div class="option-text">${opt}</div>
+        </div>
+      `).join('');
+
+      document.getElementById('btn-exam-prev').disabled = currentQIndex === 0;
+      document.getElementById('btn-exam-next').innerHTML = currentQIndex === EXAM_QUESTIONS.length - 1
+        ? `<span>Submit Exam</span> <i data-lucide="check" style="width: 16px; height: 16px;"></i>`
+        : `<span>Next Question</span> <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>`;
+
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function selectExamOption(idx) {
+      userAnswers[currentQIndex] = idx;
+      renderQuestion();
+    }
+
+    function prevExamQuestion() {
+      if (currentQIndex > 0) {
+        currentQIndex--;
+        renderQuestion();
+      }
+    }
+
+    function nextExamQuestion() {
+      if (userAnswers[currentQIndex] === undefined) {
+        window.showToast('Please select an option before proceeding', 'info');
+        return;
+      }
+
+      if (currentQIndex < EXAM_QUESTIONS.length - 1) {
+        currentQIndex++;
+        renderQuestion();
+      } else {
+        submitExam();
+      }
+    }
+
+    function submitExam() {
+      let correct = 0;
+      EXAM_QUESTIONS.forEach((q, i) => {
+        if (userAnswers[i] === q.correctIndex) correct++;
+      });
+      const score = Math.round((correct / EXAM_QUESTIONS.length) * 100);
+
+      document.getElementById('exam-active-view').style.display = 'none';
+      document.getElementById('exam-result-view').style.display = 'block';
+      document.getElementById('result-score-text').textContent = `${score}%`;
+
+      window.gamification.completeExam('exam-ch2', score);
+      if (window.lucide) window.lucide.createIcons();
+    }
+  </script>
+</body>
+</html>

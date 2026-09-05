@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Profile - SPS Code Orbit</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <div class="app-shell">
+    <aside id="app-sidebar"></aside>
+
+    <div class="main-wrapper">
+      <header id="top-header"></header>
+
+      <main class="page-content" style="max-width: 900px; margin: 0 auto; width: 100%;">
+        
+        <div class="card" style="padding: 2.5rem; border-radius: var(--radius-xl); margin-bottom: 2rem;">
+          <div style="display: flex; align-items: center; gap: 2rem; border-bottom: 1px solid var(--border-light); padding-bottom: 2rem; margin-bottom: 2rem;">
+            <img src="/assets/shady/shady.png" alt="Shady" style="width: 96px; height: 96px; border-radius: 50%; object-fit: cover; border: 3px solid var(--color-primary);" id="profile-page-avatar">
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.25rem;">
+                <h1 style="font-size: 1.75rem; font-weight: 800; color: var(--text-main);" id="profile-full-name">Shady</h1>
+                <span class="badge badge-primary">Student</span>
+              </div>
+              <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.5rem;" id="profile-meta-academic">Secondary 2 · Class D</p>
+              <div style="font-size: 0.85rem; color: var(--text-muted);">Username: <span id="profile-username" style="font-family: var(--font-mono); font-weight: 600;">shady</span></div>
+            </div>
+          </div>
+
+          <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 1.25rem;">Academic Credentials</h3>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 2rem;">
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.35rem;">Academic Group</label>
+              <input type="text" class="input-field" value="Secondary" readonly style="background: var(--bg-surface-secondary);">
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.35rem;">Grade &amp; Class</label>
+              <input type="text" class="input-field" value="Secondary 2 — Class D" readonly style="background: var(--bg-surface-secondary);">
+            </div>
+          </div>
+
+          <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 1.25rem;" id="settings">Preferences &amp; Display</h3>
+          <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: var(--bg-surface-secondary); border-radius: var(--radius-md);">
+              <div>
+                <div style="font-weight: 600; color: var(--text-main);">Theme Mode</div>
+                <div style="font-size: 0.85rem; color: var(--text-secondary);">Toggle light and dark interface colors</div>
+              </div>
+              <button class="btn btn-secondary btn-sm" onclick="window.toggleTheme()">Toggle Theme</button>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: var(--bg-surface-secondary); border-radius: var(--radius-md);">
+              <div>
+                <div style="font-weight: 600; color: var(--text-main);">Sound Effects &amp; Feedback</div>
+                <div style="font-size: 0.85rem; color: var(--text-secondary);">Play audio cues on correct answers</div>
+              </div>
+              <span class="badge badge-success">Enabled</span>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-light); padding-top: 1.5rem;">
+            <button class="btn btn-outline-danger" onclick="window.auth.logout()">
+              <i data-lucide="log-out" style="width: 16px; height: 16px;"></i>
+              <span>Log Out</span>
+            </button>
+            <button class="btn btn-primary" onclick="showToast('Profile preferences saved!', 'success')">Save Changes</button>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="/data/users.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/components.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      window.renderSidebar('profile');
+      window.renderHeader('Student Profile', 'Manage your account settings and preferences.');
+      
+      const user = window.auth.getCurrentUser();
+      if (user) {
+        document.getElementById('profile-full-name').textContent = user.fullName;
+        document.getElementById('profile-meta-academic').textContent = `${user.grade} · ${user.class}`;
+        document.getElementById('profile-username').textContent = user.username;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Courses - SPS Code Orbit</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <div class="app-shell">
+    <aside id="app-sidebar"></aside>
+
+    <div class="main-wrapper">
+      <!-- Top Header Bar with Search & Filters -->
+      <header class="top-header" id="courses-top-header">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <button class="mobile-nav-toggle" onclick="document.getElementById('app-sidebar').classList.toggle('open')" id="mobile-menu-btn">
+            <i data-lucide="menu"></i>
+          </button>
+          <div class="header-greeting">
+            <h1>My Courses</h1>
+            <p>Courses selected for your learning path.</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <!-- Search input -->
+          <div class="search-input-wrap" style="width: 240px;">
+            <input type="text" class="search-input" placeholder="Search courses..." id="courses-search-input" onkeyup="filterCourses()">
+            <i data-lucide="search" style="width: 18px; height: 18px;"></i>
+          </div>
+
+          <!-- Filter button -->
+          <button class="btn btn-secondary btn-sm" id="btn-filter-courses" style="border-radius: var(--radius-full); padding: 0.55rem 1rem;">
+            <i data-lucide="sliders-horizontal" style="width: 16px; height: 16px;"></i>
+            <span>Filter</span>
+          </button>
+
+          <!-- Notification Bell -->
+          <div class="notification-bell" onclick="showToast('You have 3 unread course announcements', 'info')" id="header-notif-bell">
+            <i data-lucide="bell" style="width: 20px; height: 20px;"></i>
+            <span class="notification-badge">3</span>
+          </div>
+
+          <!-- Profile -->
+          <a href="/student/profile.html">
+            <img src="/assets/shady/shady.png" alt="Shady Profile" class="header-user-avatar">
+          </a>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <main class="page-content">
+        <!-- 1. Learning Path Banner -->
+        <div class="learning-path-banner" id="learning-path-banner">
+          <div class="learning-path-left">
+            <div class="learning-path-icon">
+              <i data-lucide="bookmark" style="width: 22px; height: 22px;"></i>
+            </div>
+            <div class="learning-path-info">
+              <h3>Your Learning Path</h3>
+              <p>These courses are part of your academic path for Secondary 2 · Class D.</p>
+            </div>
+          </div>
+
+          <div class="academic-group-pill">
+            <i data-lucide="graduation-cap" style="width: 20px; height: 20px; color: #2563EB;"></i>
+            <div>
+              <div class="group-label">Academic Group</div>
+              <div class="group-val">Secondary</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Course Cards Grid -->
+        <div class="courses-grid-4" style="grid-template-columns: repeat(3, 1fr);" id="my-courses-grid">
+          
+          <!-- Course 1: Introduction to Programming -->
+          <div class="course-card" data-title="introduction to programming">
+            <div class="course-card-thumb-wrap" style="height: 160px;">
+              <img src="/assets/courses/prog.png" alt="Introduction to Programming">
+            </div>
+            <div class="course-card-body">
+              <div class="course-card-header">
+                <h3 class="course-card-title">Introduction to Programming</h3>
+                <i data-lucide="more-vertical" class="course-dots-menu"></i>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.85rem; line-height: 1.45;">
+                Learn the fundamentals of coding using Python. Build logic and solve real problems.
+              </p>
+              <span class="badge badge-secondary-track course-card-tag">Secondary</span>
+              
+              <div style="display: flex; align-items: center; gap: 1.25rem; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
+                <span style="display: inline-flex; align-items: center; gap: 0.35rem;"><i data-lucide="book-open" style="width: 14px; height: 14px;"></i> 6 Chapters</span>
+                <span style="display: inline-flex; align-items: center; gap: 0.35rem;"><i data-lucide="play-circle" style="width: 14px; height: 14px;"></i> 24 Lessons</span>
+              </div>
+
+              <div class="course-progress-block">
+                <div class="course-progress-row">
+                  <div class="progress-bar-container">
+                    <div class="progress-bar-fill" style="width: 62%;"></div>
+                  </div>
+                  <span class="course-percent-label">62%</span>
+                </div>
+
+                <a href="/student/chapter.html?course=intro-programming" class="btn btn-primary btn-sm" style="width: 100%; border-radius: var(--radius-md); padding: 0.65rem 1rem;">
+                  <span>Continue Learning</span>
+                  <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course 2: AI Fundamentals -->
+          <div class="course-card" data-title="artificial intelligence fundamentals">
+            <div class="course-card-thumb-wrap" style="height: 160px;">
+              <img src="/assets/courses/ai.png" alt="Artificial Intelligence Fundamentals">
+            </div>
+            <div class="course-card-body">
+              <div class="course-card-header">
+                <h3 class="course-card-title">Artificial Intelligence Fundamentals</h3>
+                <i data-lucide="more-vertical" class="course-dots-menu"></i>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.85rem; line-height: 1.45;">
+                Explore how AI works and build your first machine learning models.
+              </p>
+              <span class="badge badge-secondary-track course-card-tag">Secondary</span>
+              
+              <div style="display: flex; align-items: center; gap: 1.25rem; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
+                <span style="display: inline-flex; align-items: center; gap: 0.35rem;"><i data-lucide="book-open" style="width: 14px; height: 14px;"></i> 5 Chapters</span>
+                <span style="display: inline-flex; align-items: center; gap: 0.35rem;"><i data-lucide="play-circle" style="width: 14px; height: 14px;"></i> 18 Lessons</span>
+              </div>
+
+              <div class="course-progress-block">
+                <div class="course-progress-row">
+                  <div class="progress-bar-container">
+                    <div class="progress-bar-fill" style="width: 45%;"></div>
+                  </div>
+                  <span class="course-percent-label">45%</span>
+                </div>
+
+                <a href="/student/chapter.html?course=ai-fundamentals" class="btn btn-primary btn-sm" style="width: 100%; border-radius: var(--radius-md); padding: 0.65rem 1rem;">
+                  <span>Continue Learning</span>
+                  <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course 3: Robotics Essentials -->
+          <div class="course-card" data-title="robotics essentials">
+            <div class="course-card-thumb-wrap" style="height: 160px;">
+              <img src="/assets/courses/robotics.png" alt="Robotics Essentials">
+            </div>
+            <div class="course-card-body">
+              <div class="course-card-header">
+                <h3 class="course-card-title">Robotics Essentials</h3>
+                <i data-lucide="more-vertical" class="course-dots-menu"></i>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.85rem; line-height: 1.45;">
+                Discover robotics components and learn to build and program autonomous robots.
+              </p>
+              <span class="badge badge-secondary-track course-card-tag">Secondary</span>
+              
+              <div style="display: flex; align-items: center; gap: 1.25rem; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
+                <span style="display: inline-flex; align-items: center; gap: 0.35rem;"><i data-lucide="book-open" style="width: 14px; height: 14px;"></i> 4 Chapters</span>
+                <span style="display: inline-flex; align-items: center; gap: 0.35rem;"><i data-lucide="play-circle" style="width: 14px; height: 14px;"></i> 16 Lessons</span>
+              </div>
+
+              <div class="course-progress-block">
+                <div class="course-progress-row">
+                  <div class="progress-bar-container">
+                    <div class="progress-bar-fill" style="width: 30%;"></div>
+                  </div>
+                  <span class="course-percent-label">30%</span>
+                </div>
+
+                <a href="/student/chapter.html?course=robotics-essentials" class="btn btn-primary btn-sm" style="width: 100%; border-radius: var(--radius-md); padding: 0.65rem 1rem;">
+                  <span>Continue Learning</span>
+                  <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course 4: Digital Design & Creativity -->
+          <div class="course-card" data-title="digital design creativity">
+            <div class="course-card-thumb-wrap" style="height: 160px;">
+              <img src="/assets/courses/design.png" alt="Digital Design & Creativity">
+            </div>
+            <div class="course-card-body">
+              <div class="course-card-header">
+                <h3 class="course-card-title">Digital Design &amp; Creativity</h3>
+                <i data-lucide="more-vertical" class="course-dots-menu"></i>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.85rem; line-height: 1.45;">
+                Learn UI/UX principles and create interactive digital projects.
+              </p>
+              <span class="badge badge-secondary-track course-card-tag">Secondary</span>
+              
+              <div style="display: flex; align-items: center; gap: 1.25rem; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
+                <span style="display: inline-flex; align-items: center; gap: 0.35rem;"><i data-lucide="book-open" style="width: 14px; height: 14px;"></i> 4 Chapters</span>
+                <span style="display: inline-flex; align-items: center; gap: 0.35rem;"><i data-lucide="play-circle" style="width: 14px; height: 14px;"></i> 14 Lessons</span>
+              </div>
+
+              <div class="course-progress-block">
+                <div class="course-progress-row">
+                  <div class="progress-bar-container">
+                    <div class="progress-bar-fill" style="width: 25%;"></div>
+                  </div>
+                  <span class="course-percent-label">25%</span>
+                </div>
+
+                <a href="/student/chapter.html?course=digital-design" class="btn btn-primary btn-sm" style="width: 100%; border-radius: var(--radius-md); padding: 0.65rem 1rem;">
+                  <span>Continue Learning</span>
+                  <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course 5: Data Structures & Algorithms -->
+          <div class="course-card" data-title="data structures algorithms">
+            <div class="course-card-thumb-wrap" style="height: 160px;">
+              <img src="/assets/courses/algo.png" alt="Data Structures & Algorithms">
+            </div>
+            <div class="course-card-body">
+              <div class="course-card-header">
+                <h3 class="course-card-title">Data Structures &amp; Algorithms</h3>
+                <i data-lucide="more-vertical" class="course-dots-menu"></i>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.85rem; line-height: 1.45;">
+                Master essential algorithms and improve your problem-solving skills.
+              </p>
+              <span class="badge badge-secondary-track course-card-tag">Secondary</span>
+              
+              <div style="display: flex; align-items: center; gap: 1.25rem; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
+                <span style="display: inline-flex; align-items: center; gap: 0.35rem;"><i data-lucide="book-open" style="width: 14px; height: 14px;"></i> 6 Chapters</span>
+                <span style="display: inline-flex; align-items: center; gap: 0.35rem;"><i data-lucide="play-circle" style="width: 14px; height: 14px;"></i> 22 Lessons</span>
+              </div>
+
+              <div class="course-progress-block">
+                <div class="course-progress-row">
+                  <div class="progress-bar-container">
+                    <div class="progress-bar-fill" style="width: 40%;"></div>
+                  </div>
+                  <span class="course-percent-label">40%</span>
+                </div>
+
+                <a href="/student/chapter.html?course=data-structures" class="btn btn-primary btn-sm" style="width: 100%; border-radius: var(--radius-md); padding: 0.65rem 1rem;">
+                  <span>Continue Learning</span>
+                  <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course 6: Game Development Basics -->
+          <div class="course-card" data-title="game development basics">
+            <div class="course-card-thumb-wrap" style="height: 160px;">
+              <img src="/assets/courses/gamedev.png" alt="Game Development Basics">
+            </div>
+            <div class="course-card-body">
+              <div class="course-card-header">
+                <h3 class="course-card-title">Game Development Basics</h3>
+                <i data-lucide="more-vertical" class="course-dots-menu"></i>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.85rem; line-height: 1.45;">
+                Create your first 2D games and learn the core game development concepts.
+              </p>
+              <span class="badge badge-secondary-track course-card-tag">Secondary</span>
+              
+              <div style="display: flex; align-items: center; gap: 1.25rem; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
+                <span style="display: inline-flex; align-items: center; gap: 0.35rem;"><i data-lucide="book-open" style="width: 14px; height: 14px;"></i> 5 Chapters</span>
+                <span style="display: inline-flex; align-items: center; gap: 0.35rem;"><i data-lucide="play-circle" style="width: 14px; height: 14px;"></i> 20 Lessons</span>
+              </div>
+
+              <div class="course-progress-block">
+                <div class="course-progress-row">
+                  <div class="progress-bar-container">
+                    <div class="progress-bar-fill" style="width: 15%;"></div>
+                  </div>
+                  <span class="course-percent-label">15%</span>
+                </div>
+
+                <a href="/student/chapter.html?course=game-dev-basics" class="btn btn-primary btn-sm" style="width: 100%; border-radius: var(--radius-md); padding: 0.65rem 1rem;">
+                  <span>Start Learning</span>
+                  <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 3. Explore Other Courses Card -->
+        <div class="explore-other-card" id="explore-other-courses-banner">
+          <div class="explore-other-left">
+            <div class="explore-icon-circle">
+              <i data-lucide="compass" style="width: 24px; height: 24px;"></i>
+            </div>
+            <div>
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.2rem;">Explore Other Courses</h3>
+              <p style="font-size: 0.875rem; color: var(--text-secondary);">Discover more courses across programming, AI, robotics, and creative technology.</p>
+            </div>
+          </div>
+
+          <a href="/courses.html" class="btn btn-secondary" style="border-radius: var(--radius-full); padding: 0.65rem 1.4rem;">
+            <span>Explore Courses</span>
+            <i data-lucide="arrow-right" style="width: 16px; height: 16px; color: var(--color-primary);"></i>
+          </a>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="/data/users.js"></script>
+  <script src="/data/courses.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/components.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      window.renderSidebar('my-courses');
+    });
+
+    function filterCourses() {
+      const query = document.getElementById('courses-search-input').value.toLowerCase();
+      const cards = document.querySelectorAll('#my-courses-grid .course-card');
+      cards.forEach(card => {
+        const title = card.getAttribute('data-title') || '';
+        card.style.display = title.includes(query) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
